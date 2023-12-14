@@ -25,7 +25,14 @@ public class Hotel {
 	public Hotel() {
 		
 	}
+public Hotel( String nomHotel, int capaciteHotel, double prixHotel, Reservation reservation) {
+		
+		
+		this.nomHotel = nomHotel;
+		this.capaciteHotel = capaciteHotel;
+		this.prixHotel = prixHotel;
 
+	}
 
 	public Hotel(Integer id, String nomHotel, int capaciteHotel, double prixHotel, Reservation reservation) {
 		
