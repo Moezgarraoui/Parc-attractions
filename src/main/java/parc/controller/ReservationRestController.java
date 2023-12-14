@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import parc.model.Hotel;
+import parc.dao.IDAOReservation;
 import parc.model.Reservation;
 
 @RestController
@@ -54,8 +54,8 @@ public class ReservationRestController {
     }
 
     @DeleteMapping("/{id}")
-    public Reservation delete(@PathVariable Integer id) {
-    	return daoReservation.deleteById(id);
+    public void delete(@PathVariable Integer id) {
+    	 daoReservation.deleteById(id);
     }
 	
 	

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import parc.dao.IDAORepas;
 import parc.model.Repas;
 
 @RestController
@@ -50,7 +51,7 @@ public class RepasRestController {
 	}
 
 	@DeleteMapping("/{id}")
-	public Repas delete(@PathVariable Integer id) {
-		return daoRepas.deleteById(id);
+	public void delete(@PathVariable Integer id) {
+		 daoRepas.deleteById(id);
 	}
 }
