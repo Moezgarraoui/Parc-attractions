@@ -1,5 +1,6 @@
 package parc.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,9 +11,13 @@ import jakarta.persistence.OneToOne;
 public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+ 
     private Integer id;
+    @Column
     private String nomHotel;
+    @Column
     private int capaciteHotel;
+    @Column
     private double prixHotel;
 
     
