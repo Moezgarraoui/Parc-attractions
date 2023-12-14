@@ -2,6 +2,7 @@ package parc.model;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,9 +18,13 @@ import jakarta.persistence.Table;
 public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column
 	private Integer id;
+	@Column
 	private LocalDate dateReservation;
+	@Column
 	private LocalDate dateFinReservation;
+	@Column
 	private double prixTotal;
 
 	@JoinColumn(name = "client")
@@ -133,5 +138,7 @@ public class Reservation {
 				+ dateFinReservation + ", prixTotal=" + prixTotal + ", client=" + client + ", visiteur=" + visiteur
 				+ ", repas=" + repas + ", hotel=" + hotel + "]";
 	}
+
+	
 
 }
