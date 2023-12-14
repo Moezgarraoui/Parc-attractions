@@ -17,14 +17,9 @@ public class Hotel {
 
     
 
-
-
-
-
 	public Hotel() {
 		
 	}
-
 
 
 	public Hotel(Integer id, String nomHotel, int capaciteHotel, double prixHotel, Reservation reservation) {
