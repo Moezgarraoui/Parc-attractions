@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import parc.dao.IDAOCompte;
 import parc.model.Compte;
 import parc.model.Compte;
 
