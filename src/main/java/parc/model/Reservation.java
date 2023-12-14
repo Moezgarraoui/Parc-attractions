@@ -7,4 +7,6 @@ public class Reservation {
 	private LocalDate dateReservation;
 	private LocalDate dateFinReservation;
 	private double prixTotal;
+	
+	
 }
