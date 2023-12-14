@@ -44,18 +44,18 @@ import parc.model.Repas;
 	    }
 
 	    @PostMapping
-	    public Hotel ajouterHotel(@RequestBody Hotel hotel) {
+	    public Hotel insert(@RequestBody Hotel hotel) {
 	       
 	        return daoHotel.save(hotel);
 	    }
 
 	    @PutMapping("/{id}")
-	    public Hotel modifierHotel(@PathVariable Long id, @RequestBody Hotel hotel) {
+	    public Hotel update(@PathVariable Integer id, @RequestBody Hotel hotel) {
 	    	return daoHotel.save(hotel);
 	    }
 
 	    @DeleteMapping("/{id}")
-	    public Hotel deleteById(@PathVariable Integer id) {
+	    public Hotel delete(@PathVariable Integer id) {
 	    	return daoHotel.deleteById(id);
 	    }
 }

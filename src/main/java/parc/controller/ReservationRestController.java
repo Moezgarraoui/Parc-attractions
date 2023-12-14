@@ -21,6 +21,9 @@ import parc.model.Reservation;
 public class ReservationRestController {
 	@Autowired
 	IDAOReservation daoReservation;
+	
+	
+	
 	@GetMapping
     public List<Reservation> findAll() {
         
@@ -40,18 +43,18 @@ public class ReservationRestController {
     }
 
     @PostMapping
-    public Reservation ajouterReservation(@RequestBody Reservation reservation) {
+    public Reservation insert(@RequestBody Reservation reservation) {
        
         return daoReservation.save(reservation);
     }
 
     @PutMapping("/{id}")
-    public Reservation modifierReservation(@PathVariable Long id, @RequestBody Reservation reservation) {
+    public Reservation update(@PathVariable Integer id, @RequestBody Reservation reservation) {
     	return daoReservation.save(reservation);
     }
 
     @DeleteMapping("/{id}")
-    public Reservation deleteById(@PathVariable Integer id) {
+    public Reservation delete(@PathVariable Integer id) {
     	return daoReservation.deleteById(id);
     }
 	

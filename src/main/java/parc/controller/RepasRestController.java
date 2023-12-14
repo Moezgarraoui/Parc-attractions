@@ -1,6 +1,7 @@
 package parc.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,32 +20,37 @@ import parc.model.Repas;
 public class RepasRestController {
 	@Autowired
 	IDAORepas daoRepas;
-	
+
 	@GetMapping
-    public List<Repas> findAll() {
-        
-        return daoRepas.findAll();
-    }
+	public List<Repas> findAll() {
 
-    @GetMapping("/{id}")
-    public Repas findById(@PathVariable Integer id) {
-        
-        return daoRepas.findById(id).get();
-    }
+		return daoRepas.findAll();
+	}
 
-    @PostMapping
-    public Repas ajouterRepas(@RequestBody Repas repas) {
-       
-        return daoRepas.save(repas);
-    }
+	@GetMapping("/{id}")
+	public Repas findById(@PathVariable Integer id) {
+		Optional<Repas> opt = daoRepas.findById(id);
+		if(opt.isEmpty()) 
+		{
+			return null;
+		}
 
-    @PutMapping("/{id}")
-    public Repas modifierRepas(@PathVariable Long id, @RequestBody Repas repas) {
-    	return daoRepas.save(repas);
-    }
+		return opt.get();
+	}
 
-    @DeleteMapping("/{id}")
-    public Repas deleteById(@PathVariable Integer id) {
-    	return daoRepas.deleteById(id);
-    }
+	@PostMapping
+	public Repas insert(@RequestBody Repas repas) {
+
+		return daoRepas.save(repas);
+	}
+
+	@PutMapping("/{id}")
+	public Repas update(@PathVariable Integer id, @RequestBody Repas repas) {
+		return daoRepas.save(repas);
+	}
+
+	@DeleteMapping("/{id}")
+	public Repas delete(@PathVariable Integer id) {
+		return daoRepas.deleteById(id);
+	}
 }
