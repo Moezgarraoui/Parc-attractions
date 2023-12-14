@@ -2,13 +2,12 @@ package parc.model;
 
 import java.time.LocalDate;
 
-import org.hibernate.annotations.ManyToAny;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -32,9 +31,20 @@ public class Reservation {
 	@JoinColumn(name="visiteur")
 	@ManyToOne
 	private Visiteur visiteur;
+	  @OneToOne
+	    @JoinColumn(name = "repas")
+	    private Repas repas;  
+
+	    @OneToOne
+	    @JoinColumn(name = "hotel")
+	    private Hotel hotel; 
 	
 	
+<<<<<<< HEAD
 	
 =======
 >>>>>>> classes_attractions
+=======
+
+>>>>>>> main
 }
