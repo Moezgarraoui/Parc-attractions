@@ -23,6 +23,7 @@ public class Reservation {
 	private double prixTotal;
 	
 	
+<<<<<<< HEAD
 	@JoinColumn(name="client")
 	@OneToOne
 	private Client client;
@@ -34,4 +35,6 @@ public class Reservation {
 	
 	
 	
+=======
+>>>>>>> classes_attractions
 }
