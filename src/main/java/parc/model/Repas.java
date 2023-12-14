@@ -25,6 +25,12 @@ public class Repas {
     public Repas() {
 	
 	}
+public Repas(LocalTime heureRepas, LocalDate dateRepas, Reservation reservation) {
+		
+		
+		this.heureRepas = heureRepas;
+		this.dateRepas = dateRepas;
+	}
 	public Repas(Integer id, LocalTime heureRepas, LocalDate dateRepas, Reservation reservation) {
 		
 		this.id = id;
