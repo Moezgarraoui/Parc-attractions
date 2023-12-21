@@ -1,5 +1,8 @@
 package parc.model;
 
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,6 +25,9 @@ public class Visiteur {
 	private int age;
 	@Column
 	private double taille;
+	@ManyToOne
+	@JoinColumn(name="reservation")
+	private Reservation reservation;
 	public Visiteur() {
 	}
 	public Visiteur(String nom, String prenom, int age, double taille) {

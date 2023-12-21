@@ -1,6 +1,9 @@
 package parc.model;
 
 import java.time.LocalDate;
+import java.util.List;
+
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,8 +13,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+
 
 @Entity
 @Table(name = "réservation")
@@ -31,9 +36,11 @@ public class Reservation {
 	@OneToOne
 	private Client client;
 
-	@JoinColumn(name = "visiteur")
+	/*@JoinColumn(name = "visiteur")
 	@ManyToOne
-	private Visiteur visiteur;
+	private Visiteur visiteur; //Faire un array de visiteur*/
+	@OneToMany(mappedBy = "reservation")
+	private List<Visiteur> visiteurs; 
 	@OneToOne
 	@JoinColumn(name = "repas")
 	private Repas repas;
@@ -45,28 +52,34 @@ public class Reservation {
 	public Reservation() {
 	}
 
+	
+
 	public Reservation(LocalDate dateReservation, LocalDate dateFinReservation, double prixTotal, Client client,
-			Visiteur visiteur, Repas repas, Hotel hotel) {
+			List<Visiteur> visiteurs, Repas repas, Hotel hotel) {
 		this.dateReservation = dateReservation;
 		this.dateFinReservation = dateFinReservation;
 		this.prixTotal = prixTotal;
 		this.client = client;
-		this.visiteur = visiteur;
+		this.visiteurs = visiteurs;
 		this.repas = repas;
 		this.hotel = hotel;
 	}
 
+
+
 	public Reservation(Integer id, LocalDate dateReservation, LocalDate dateFinReservation, double prixTotal,
-			Client client, Visiteur visiteur, Repas repas, Hotel hotel) {
+			Client client, List<Visiteur> visiteurs, Repas repas, Hotel hotel) {
 		this.id = id;
 		this.dateReservation = dateReservation;
 		this.dateFinReservation = dateFinReservation;
 		this.prixTotal = prixTotal;
 		this.client = client;
-		this.visiteur = visiteur;
+		this.visiteurs = visiteurs;
 		this.repas = repas;
 		this.hotel = hotel;
 	}
+
+
 
 	public Integer getId() {
 		return id;
@@ -108,12 +121,14 @@ public class Reservation {
 		this.client = client;
 	}
 
-	public Visiteur getVisiteur() {
-		return visiteur;
+	
+
+	public List<Visiteur> getVisiteurs() {
+		return visiteurs;
 	}
 
-	public void setVisiteur(Visiteur visiteur) {
-		this.visiteur = visiteur;
+	public void setVisiteurs(List<Visiteur> visiteurs) {
+		this.visiteurs = visiteurs;
 	}
 
 	public Repas getRepas() {
@@ -132,12 +147,16 @@ public class Reservation {
 		this.hotel = hotel;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Reservation [id=" + id + ", dateReservation=" + dateReservation + ", dateFinReservation="
-				+ dateFinReservation + ", prixTotal=" + prixTotal + ", client=" + client + ", visiteur=" + visiteur
+				+ dateFinReservation + ", prixTotal=" + prixTotal + ", client=" + client + ", visiteurs=" + visiteurs
 				+ ", repas=" + repas + ", hotel=" + hotel + "]";
 	}
+
+	
 
 	
 

@@ -20,7 +20,6 @@ public class Hotel {
     @Column
     private double prixHotel;
 
-    
 
 	public Hotel() {
 		

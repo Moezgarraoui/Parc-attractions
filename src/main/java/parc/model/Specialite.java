@@ -1,5 +1,5 @@
 package parc.model;
 
 public enum Specialite {
-	Italien, mexicain,maghrebin,francais
+	Italien, Mexicain,Maghrebin,Français
 }
