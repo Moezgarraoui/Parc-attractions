@@ -1,6 +1,7 @@
 package parc.model;
 
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,7 +20,7 @@ public class Client {
 	private String nom,prenom,numero,voie,ville,cp;
 	
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="compte")
 	private Compte compte;
 
