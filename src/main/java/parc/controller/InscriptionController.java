@@ -23,58 +23,42 @@ import parc.service.InscriptionService;
 
 
 @RestController
-
 @CrossOrigin("*")
 public class InscriptionController {
 @Autowired
 IDAOClient daoClient;
 @Autowired
 IDAOCompte daoCompte;
-@Autowired
-private InscriptionService service;
 
-/*@PostMapping("/inscription")
-@CrossOrigin(origins=" http://localhost:4200")
-
-public Client registartionClient (@RequestBody Client client) throws Exception {//Registration
-String tempNom=client.getNom();
-if(tempNom !=null&&!"".equals(tempNom)) {
-Client clientobj=service.fetchUserPrenom(tempNom);
-if(clientobj!=null) {
-throw new Exception("l'utilisateur déja excicte");
-}
-}
-
-
-Client clientobj=null;
-clientobj=service.saveUser(client);
-
-return clientobj;
-}*/
 @PostMapping("/inscription")
 public Client inscription(@RequestBody @Valid inscriptionRequest inscriptionRequest, BindingResult result) {
-if(result.hasErrors()) {
-throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+    if (result.hasErrors()) {
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Validation failed");
+    }
+
+    Client client = new Client();
+    BeanUtils.copyProperties(inscriptionRequest, client);
+    client = daoClient.save(client);
+
+    Compte compte = new Compte();
+    BeanUtils.copyProperties(inscriptionRequest, compte);
+    compte = daoCompte.save(compte);
+
+    assignRolesBasedOnAdminStatus(compte);
+   
+
+    return client;
 }
+private void assignRolesBasedOnAdminStatus(Compte compte) {
+    // Vérifiez si le login est "canard" et le mot de passe est "canard"
+	 if ("canard".equals(compte.getLogin()) && "canard".equals(compte.getPassword())) {
+	        // Si oui, attribuez le rôle d'administrateur
+	        compte.setAdmin(true);
+	    } else {
+	        compte.setAdmin(false);
+	    }
 
-Client client = new Client();
-
-BeanUtils.copyProperties(inscriptionRequest, client);
-
-/*Client.getRoles().add(Roles.USER);*/
-
-client = daoClient.save(client);
-
-Compte compte = new Compte();
-
-BeanUtils.copyProperties(inscriptionRequest, compte);
-
-compte = daoCompte.save(compte);
-
-return client;
+    // Enregistrez les modifications dans la base de données
+    daoCompte.save(compte);
 }
-
-
-
-
 }
