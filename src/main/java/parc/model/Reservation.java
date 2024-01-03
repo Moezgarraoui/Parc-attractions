@@ -41,10 +41,13 @@ public class Reservation {
 	private Visiteur visiteur; //Faire un array de visiteur*/
 	@OneToMany(mappedBy = "reservation")
 	private List<Visiteur> visiteurs; 
-	@OneToOne
-	@JoinColumn(name = "repas")
-	private Repas repas;
+	//@OneToOne
+	//@JoinColumn(name = "repas")
+	//private Repas repas;
 
+	@OneToMany(mappedBy="reservation")
+	private List<Repas> listRepas;
+	
 	@OneToOne
 	@JoinColumn(name = "hotel")
 	private Hotel hotel;
@@ -52,32 +55,32 @@ public class Reservation {
 	public Reservation() {
 	}
 
-	
 
 	public Reservation(LocalDate dateReservation, LocalDate dateFinReservation, double prixTotal, Client client,
-			List<Visiteur> visiteurs, Repas repas, Hotel hotel) {
+			List<Visiteur> visiteurs, List<Repas> listRepas, Hotel hotel) {
 		this.dateReservation = dateReservation;
 		this.dateFinReservation = dateFinReservation;
 		this.prixTotal = prixTotal;
 		this.client = client;
 		this.visiteurs = visiteurs;
-		this.repas = repas;
+		this.listRepas = listRepas;
 		this.hotel = hotel;
 	}
 
-
-
 	public Reservation(Integer id, LocalDate dateReservation, LocalDate dateFinReservation, double prixTotal,
-			Client client, List<Visiteur> visiteurs, Repas repas, Hotel hotel) {
+			Client client, List<Visiteur> visiteurs, List<Repas> listRepas, Hotel hotel) {
 		this.id = id;
 		this.dateReservation = dateReservation;
 		this.dateFinReservation = dateFinReservation;
 		this.prixTotal = prixTotal;
 		this.client = client;
 		this.visiteurs = visiteurs;
-		this.repas = repas;
+		this.listRepas = listRepas;
 		this.hotel = hotel;
 	}
+
+
+
 
 
 
@@ -131,13 +134,19 @@ public class Reservation {
 		this.visiteurs = visiteurs;
 	}
 
-	public Repas getRepas() {
-		return repas;
+	
+
+	public List<Repas> getListRepas() {
+		return listRepas;
 	}
 
-	public void setRepas(Repas repas) {
-		this.repas = repas;
+
+
+	public void setListRepas(List<Repas> listRepas) {
+		this.listRepas = listRepas;
 	}
+
+
 
 	public Hotel getHotel() {
 		return hotel;
@@ -153,8 +162,11 @@ public class Reservation {
 	public String toString() {
 		return "Reservation [id=" + id + ", dateReservation=" + dateReservation + ", dateFinReservation="
 				+ dateFinReservation + ", prixTotal=" + prixTotal + ", client=" + client + ", visiteurs=" + visiteurs
-				+ ", repas=" + repas + ", hotel=" + hotel + "]";
+				+ ", listRepas=" + listRepas + ", hotel=" + hotel + "]";
 	}
+
+
+
 
 	
 

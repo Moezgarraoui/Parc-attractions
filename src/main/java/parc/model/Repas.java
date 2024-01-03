@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -23,27 +24,34 @@ public class Repas {
     private LocalDate dateRepas;
    
 	
-    @OneToOne
+    @ManyToOne
 	@JoinColumn(name = "restaurant")
 	private Restaurant restaurant;
  
-    
+    @ManyToOne
+	@JoinColumn(name="reservation")
+	private Reservation reservation;
     
     public Repas() {
 	
 	}
-public Repas(LocalTime heureRepas, LocalDate dateRepas, Reservation reservation) {
-		
-		
+
+	public Repas(LocalTime heureRepas, LocalDate dateRepas, Restaurant restaurant, Reservation reservation) {
 		this.heureRepas = heureRepas;
 		this.dateRepas = dateRepas;
+		this.restaurant = restaurant;
+		this.reservation = reservation;
 	}
-	public Repas(Integer id, LocalTime heureRepas, LocalDate dateRepas, Reservation reservation) {
-		
+
+	public Repas(Integer id, LocalTime heureRepas, LocalDate dateRepas, Restaurant restaurant,
+			Reservation reservation) {
 		this.id = id;
 		this.heureRepas = heureRepas;
 		this.dateRepas = dateRepas;
+		this.restaurant = restaurant;
+		this.reservation = reservation;
 	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -63,11 +71,28 @@ public Repas(LocalTime heureRepas, LocalDate dateRepas, Reservation reservation)
 		this.dateRepas = dateRepas;
 	}
 	
+	public Restaurant getRestaurant() {
+		return restaurant;
+	}
+
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
+	}
+
+	public Reservation getReservation() {
+		return reservation;
+	}
+
+	public void setReservation(Reservation reservation) {
+		this.reservation = reservation;
+	}
+
 	@Override
 	public String toString() {
-		return "Repas [id=" + id + ", heureRepas=" + heureRepas + ", dateRepas=" + dateRepas + ", reservation="
-				+  "]";
+		return "Repas [id=" + id + ", heureRepas=" + heureRepas + ", dateRepas=" + dateRepas + ", restaurant="
+				+ restaurant + ", reservation=" + reservation + "]";
 	}
-    
+	
+	
 
 }
