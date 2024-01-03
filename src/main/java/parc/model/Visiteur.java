@@ -73,6 +73,13 @@ public class Visiteur {
 	public void setTaille(double taille) {
 		this.taille = taille;
 	}
+	
+	public Reservation getReservation() {
+		return reservation;
+	}
+	public void setReservation(Reservation reservation) {
+		this.reservation = reservation;
+	}
 	@Override
 	public String toString() {
 		return "Visiteur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", age=" + age + ", taille=" + taille

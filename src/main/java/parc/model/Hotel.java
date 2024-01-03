@@ -16,15 +16,15 @@ public class Hotel {
     @Column
     private String nomHotel;
     @Column
-    private int capaciteHotel;
+    private Integer capaciteHotel;
     @Column
-    private double prixHotel;
+    private Double prixHotel;
 
 
 	public Hotel() {
 		
 	}
-public Hotel( String nomHotel, int capaciteHotel, double prixHotel, Reservation reservation) {
+public Hotel( String nomHotel, Integer capaciteHotel, Double prixHotel, Reservation reservation) {
 		
 		
 		this.nomHotel = nomHotel;
@@ -33,7 +33,7 @@ public Hotel( String nomHotel, int capaciteHotel, double prixHotel, Reservation 
 
 	}
 
-	public Hotel(Integer id, String nomHotel, int capaciteHotel, double prixHotel, Reservation reservation) {
+	public Hotel(Integer id, String nomHotel, Integer capaciteHotel, Double prixHotel, Reservation reservation) {
 		
 		this.id = id;
 		this.nomHotel = nomHotel;
@@ -41,61 +41,36 @@ public Hotel( String nomHotel, int capaciteHotel, double prixHotel, Reservation 
 		this.prixHotel = prixHotel;
 
 	}
+
+
+
 
 
 
 	public Integer getId() {
 		return id;
 	}
-
-
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-
-
 	public String getNomHotel() {
 		return nomHotel;
 	}
-
-
-
 	public void setNomHotel(String nomHotel) {
 		this.nomHotel = nomHotel;
 	}
-
-
-
-	public int getCapaciteHotel() {
+	public Integer getCapaciteHotel() {
 		return capaciteHotel;
 	}
-
-
-
-	public void setCapaciteHotel(int capaciteHotel) {
+	public void setCapaciteHotel(Integer capaciteHotel) {
 		this.capaciteHotel = capaciteHotel;
 	}
-
-
-
-	public double getPrixHotel() {
+	public Double getPrixHotel() {
 		return prixHotel;
 	}
-
-
-
-	public void setPrixHotel(double prixHotel) {
+	public void setPrixHotel(Double prixHotel) {
 		this.prixHotel = prixHotel;
 	}
-
-
-
-	
-
-
-
 	@Override
 	public String toString() {
 		return "Hotel [id=" + id + ", nomHotel=" + nomHotel + ", capaciteHotel=" + capaciteHotel + ", prixHotel="
