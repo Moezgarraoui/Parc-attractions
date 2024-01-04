@@ -1,7 +1,7 @@
 package parc.controller;
 
 
-import java.util.Optional;
+
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,19 +35,32 @@ public Client inscription(@RequestBody @Valid inscriptionRequest inscriptionRequ
     if (result.hasErrors()) {
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Validation failed");
     }
+    Compte compte = new Compte();
+    Compte compteSaved = new Compte();
+    //BeanUtils.copyProperties(inscriptionRequest, compte);
+    compte.setLogin(inscriptionRequest.getCompte().getLogin());
+    compte.setPassword(inscriptionRequest.getCompte().getPassword());
+    
+    compteSaved = daoCompte.save(compte);
 
     Client client = new Client();
-    BeanUtils.copyProperties(inscriptionRequest, client);
+    //BeanUtils.copyProperties(inscriptionRequest, client);
+    
+    client.setCompte(compteSaved);
+    client.setNom(inscriptionRequest.getNom());
+    client.setPrenom(inscriptionRequest.getPrenom());
+    client.setNumero(inscriptionRequest.getNumero());
+    client.setVille(inscriptionRequest.getVille());
+    client.setCp(inscriptionRequest.getCp());
+    client.setVoie(inscriptionRequest.getVoie());
     client = daoClient.save(client);
 
-    Compte compte = new Compte();
-    BeanUtils.copyProperties(inscriptionRequest, compte);
-    compte = daoCompte.save(compte);
-
+   
     assignRolesBasedOnAdminStatus(compte);
    
 
     return client;
+   
 }
 private void assignRolesBasedOnAdminStatus(Compte compte) {
     // Vérifiez si le login est "canard" et le mot de passe est "canard"

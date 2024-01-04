@@ -19,6 +19,7 @@ public class Compte {
 	private String password;
 	@Column
 	private boolean admin;
+	
 	public Compte() {
 	}
 	public Compte(String login, String password, boolean admin) {

@@ -20,7 +20,7 @@ public class Client {
 	private String nom,prenom,numero,voie,ville,cp;
 	
 	
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name="compte")
 	private Compte compte;
 

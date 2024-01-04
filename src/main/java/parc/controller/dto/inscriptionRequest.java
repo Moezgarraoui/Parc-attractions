@@ -1,13 +1,15 @@
 package parc.controller.dto;
 
+import parc.model.Compte;
+
 public class inscriptionRequest {
 private String nom,prenom,numero,voie,ville,cp;
-private String login,password;
+private Compte compte;
 public inscriptionRequest() {
 super();
 }
 public inscriptionRequest(String nom, String prenom, String numero, String voie, String ville, String cp,
-String login, String password) {
+Compte compte) {
 super();
 this.nom = nom;
 this.prenom = prenom;
@@ -15,8 +17,7 @@ this.numero = numero;
 this.voie = voie;
 this.ville = ville;
 this.cp = cp;
-this.login = login;
-this.password = password;
+this.compte=compte;
 }
 public String getNom() {
 return nom;
@@ -54,17 +55,12 @@ return cp;
 public void setCp(String cp) {
 this.cp = cp;
 }
-public String getLogin() {
-return login;
+public Compte getCompte() {
+	return compte;
 }
-public void setLogin(String login) {
-this.login = login;
+public void setCompte(Compte compte) {
+	this.compte = compte;
 }
-public String getPassword() {
-return password;
-}
-public void setPassword(String password) {
-this.password = password;
-}
+
 
 }

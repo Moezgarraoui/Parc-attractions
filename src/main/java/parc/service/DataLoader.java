@@ -1,4 +1,4 @@
-package parc.service;
+/*package parc.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -31,4 +31,4 @@ public class DataLoader implements CommandLineRunner {
             daoCompte.save(adminUser);
         }
     }
-}
+}*/
