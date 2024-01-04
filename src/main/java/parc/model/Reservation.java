@@ -33,7 +33,7 @@ public class Reservation {
 	private double prixTotal;
 
 	@JoinColumn(name = "client")
-	@OneToOne
+	@ManyToOne
 	private Client client;
 
 	/*@JoinColumn(name = "visiteur")
@@ -48,7 +48,7 @@ public class Reservation {
 	@OneToMany(mappedBy="reservation")
 	private List<Repas> listRepas;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "hotel")
 	private Hotel hotel;
 
