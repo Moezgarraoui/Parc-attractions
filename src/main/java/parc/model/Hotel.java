@@ -43,7 +43,14 @@ public Hotel( String nomHotel, Integer capaciteHotel, Double prixHotel, Reservat
 	}
 
 
+public Hotel( String nomHotel, Integer capaciteHotel, Double prixHotel) {
+		
+		
+		this.nomHotel = nomHotel;
+		this.capaciteHotel = capaciteHotel;
+		this.prixHotel = prixHotel;
 
+	}
 
 
 
