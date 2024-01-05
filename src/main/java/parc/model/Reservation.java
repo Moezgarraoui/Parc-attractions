@@ -32,9 +32,9 @@ public class Reservation {
 	@Column
 	private double prixTotal;
 
-	@JoinColumn(name = "client")
+	@JoinColumn(name = "compte")
 	@ManyToOne
-	private Client client;
+	private Compte compte;
 
 	/*@JoinColumn(name = "visiteur")
 	@ManyToOne
@@ -56,24 +56,24 @@ public class Reservation {
 	}
 
 
-	public Reservation(LocalDate dateReservation, LocalDate dateFinReservation, double prixTotal, Client client,
+	public Reservation(LocalDate dateReservation, LocalDate dateFinReservation, double prixTotal, Compte compte,
 			List<Visiteur> visiteurs, List<Repas> listRepas, Hotel hotel) {
 		this.dateReservation = dateReservation;
 		this.dateFinReservation = dateFinReservation;
 		this.prixTotal = prixTotal;
-		this.client = client;
+		this.compte = compte;
 		this.visiteurs = visiteurs;
 		this.listRepas = listRepas;
 		this.hotel = hotel;
 	}
 
 	public Reservation(Integer id, LocalDate dateReservation, LocalDate dateFinReservation, double prixTotal,
-			Client client, List<Visiteur> visiteurs, List<Repas> listRepas, Hotel hotel) {
+			Compte compte, List<Visiteur> visiteurs, List<Repas> listRepas, Hotel hotel) {
 		this.id = id;
 		this.dateReservation = dateReservation;
 		this.dateFinReservation = dateFinReservation;
 		this.prixTotal = prixTotal;
-		this.client = client;
+		this.compte = compte;
 		this.visiteurs = visiteurs;
 		this.listRepas = listRepas;
 		this.hotel = hotel;
@@ -116,15 +116,18 @@ public class Reservation {
 		this.prixTotal = prixTotal;
 	}
 
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
-
 	
+	
+
+	public Compte getCompte() {
+		return compte;
+	}
+
+
+	public void setCompte(Compte compte) {
+		this.compte = compte;
+	}
+
 
 	public List<Visiteur> getVisiteurs() {
 		return visiteurs;
@@ -157,13 +160,16 @@ public class Reservation {
 	}
 
 
-
 	@Override
 	public String toString() {
 		return "Reservation [id=" + id + ", dateReservation=" + dateReservation + ", dateFinReservation="
-				+ dateFinReservation + ", prixTotal=" + prixTotal + ", client=" + client + ", visiteurs=" + visiteurs
+				+ dateFinReservation + ", prixTotal=" + prixTotal + ", compte=" + compte + ", visiteurs=" + visiteurs
 				+ ", listRepas=" + listRepas + ", hotel=" + hotel + "]";
 	}
+
+
+
+	
 
 
 
